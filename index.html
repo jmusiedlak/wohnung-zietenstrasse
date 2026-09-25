@@ -134,19 +134,19 @@ svg text.mut{fill:var(--muted)}
     <div>
       <span class="eyebrow">Küche · 4,40 × 3,63 m (nach Exposé-Maßstab)</span>
       <h2>Passt unsere Küchenzeile?</h2>
-      <p class="lede">Wasser und Abfluss liegen an der Wand zum Bad. Dort ist zwischen Flurtür und Außenwand ca. 3,14 m Platz. Die Vormieter haben dort eine Zeile von 3,00 m. Auf den rechten 0,73 m ist sie nur ca. 45 cm tief, weil dort der untere Balkontür-Flügel aufschlägt. Zwischen Türanschlag und Rückwand bleiben nur ca. 56 cm.</p>
+      <p class="lede">Wasser und Abfluss liegen an der Wand zum Bad. Dort ist zwischen Flurtür und Außenwand ca. 3,14 m Platz. Die Vormieter haben dort eine IKEA-Zeile in voller Tiefe bis an die Außenwand (siehe Exposé-Fotos). Die Balkontür hat einen Flügel mit Anschlag auf der Küchenseite. Geöffnet liegt er vor der Arbeitsplatte. Das Exposé zeichnet dagegen zwei Flügel und eine schmalere Zeile, laut Exposé nur „zur Veranschaulichung“.</p>
     </div>
     <div class="variants">
-      <div><b>A · 290 cm Zeile + 40er-Block</b><span>Passt mit 24 cm Luft. Die rechten 73 cm (60er + 30er) stehen im Aufschlag des unteren Balkontür-Flügels, der dann nur teilweise aufgeht. Der obere Flügel bleibt frei. Wasser liegt direkt an der Spüle.</span></div>
-      <div><b>B · 230 cm an der Tür + 60/40-Block</b><span>Ohne Konflikt: Die Zeile endet 10 cm vor dem Aufschlag der Balkontür, beide Flügel gehen voll auf. Dafür müssen Wasser und Abfluss ca. 1 m nach links verlängert werden, und der Block an der Wohnzimmerwand macht den Essplatz kleiner.</span></div>
-      <div><b>Alles in eine Zeile (330 cm)</b><span>Geht nicht: 16 cm zu lang für die 3,14 m an der Badwand.</span></div>
+      <div><b>A · 290 cm Zeile + 40er-Block</b><span>Passt mit ca. 24 cm Luft bis zur Flurtür. Die Zeile geht wie bei den Vormietern bis an die Außenwand, der 40er steht als Einzelblock an der Wohnzimmerwand.</span></div>
+      <div><b>B · 300 cm Zeile + 30er-Block</b><span>Passt mit ca. 14 cm Luft. Der schmale 30er steht an der Wohnzimmerwand und nimmt dem Essplatz weniger Platz weg.</span></div>
+      <div><b>Alles in eine Zeile (330 cm)</b><span>Laut Exposé-Maßstab 16 cm zu lang (3,14 m frei). Mit der Altplan-Küchenbreite von 4,50 m wären es 3,24 m, also immer noch 6 cm zu wenig. Vor Ort messen: Flurtür-Zarge bis Außenwand.</span></div>
     </div>
     <div class="grid">
       <div class="kplan" id="kplan"></div>
       <div class="controls">
         <div class="presets">
           <button type="button" id="presetA" class="on">A · 290 cm Zeile + 40er-Block</button>
-          <button type="button" id="presetB">B · 230 cm an der Tür + 60/40-Block</button>
+          <button type="button" id="presetB">B · 300 cm Zeile + 30er-Block</button>
           <button type="button" id="presetC">Alles in eine Zeile (330 cm)</button>
         </div>
         <div class="row">
@@ -167,10 +167,10 @@ svg text.mut{fill:var(--muted)}
         </div>
         <div class="row">
           <div class="field" style="flex:2 1 200px"><label for="mods">Module der Zeile, von links (cm)</label><input id="mods" type="text" inputmode="numeric" value="60, 60, 80, 60, 30"></div>
-          <div class="field"><label for="dep">Tiefe inkl. Platte (cm)</label><input id="dep" type="number" inputmode="decimal" min="30" max="90" step="0.5" value="63.5"></div>
+          <div class="field"><label for="dep">Tiefe inkl. Platte (cm)</label><input id="dep" type="number" inputmode="decimal" min="30" max="90" step="0.5" value="64"></div>
         </div>
         <div class="field"><label for="side">Separater Block an der Wohnzimmerwand (Module in cm, leer = keiner)</label><input id="side" type="text" inputmode="numeric" value="40"></div>
-        <p class="src">IKEA METOD: Korpus 60 cm tief, Arbeitsplatte 63,5 cm. Eure Module: 3 × 60, 80, 40, 30 = 330 cm.</p>
+        <p class="src">IKEA METOD: Korpus 60 cm tief, Arbeitsplatte ca. 64 cm. Eure Module: 3 × 60, 80, 40, 30 = 330 cm.</p>
         <div class="verdict" id="verdict"><b>…</b><span></span></div>
         <ul class="checks" id="checks"></ul>
       </div>
@@ -297,8 +297,7 @@ function door(h,o,c,w,t){
   [[3.150,13.415],[0,1],[1,0],0.80,0.15],    // Kind 2
   [[5.898,3.90],[1,0],[0,1],0.75,0.13],      // Bad
   [[8.621,0.05],[-1,0],[0,1],0.67,0.12],     // Abst.
-  [[8.621,1.598],[-1,0],[0,1],0.733,0.40],   // Balkon oben
-  [[8.621,3.065],[-1,0],[0,-1],0.733,0.40],  // Balkon unten
+  [[8.621,2.984],[-1,0],[0,-1],0.98,0.40],   // Balkontür, ein Flügel
   [[5.776,7.584],[-1,0],[0,-1],1.00,0.26],   // Eingang
 ].forEach(d=>s.push(door(...d)));
 s.push(`<path d="M${X(6.55)},${Y(7.08)} L${X(6.05)},${Y(7.08)}" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#arr)"/>`);
@@ -396,10 +395,10 @@ document.getElementById('heatRows').innerHTML =
   `<tr class="sub"><td colspan="4">Zietenstr. inkl. Grundpreis und ca. 175 €/Jahr Wartung + Schornsteinfeger</td></tr>`;
 
 // ---------- kitchen detail ----------
-const K = {w:4.401, d:3.625, pier:[0,0,0.983,0.188], win:[0.18,0.82], door:[0.308,1.260], balk:[1.594,3.061], leaf:0.733, abst:[0.046,0.716]};
+const K = {w:4.401, d:3.625, pier:[0,0,0.983,0.188], win:[0.18,0.82], door:[0.308,1.260], balk:[2.00,2.98], leaf:0.98, abst:[0.046,0.716]};
 K.left = K.d - (K.door[1]-K.door[0]) - 0.03;      // free left wall above the open door leaf
 K.run = K.w - K.door[1];                           // free run on the bath wall
-K.swingD = K.d - K.balk[1] - 0.04;                 // max depth under the lower balcony leaf
+K.swingD = K.d - K.balk[1];                        // depth between back wall and balcony-door jamb (leaf opens in front of the worktop)
 const KS = 112, KO = 0.62;
 const kx = m => +((m + KO) * KS).toFixed(1), ky = m => +((m + KO) * KS).toFixed(1);
 const kr = (x0,y0,x1,y1,fill,extra='') => `<rect x="${kx(x0)}" y="${ky(y0)}" width="${((x1-x0)*KS).toFixed(1)}" height="${((y1-y0)*KS).toFixed(1)}" fill="${fill}" ${extra}/>`;
@@ -441,14 +440,12 @@ function kitchen(){
   g.push(kr(0,K.d-dw,K.door[0]+0.02,K.d,'var(--warn-bg)'));
   g.push(leafArc(K.door[0],K.d, K.door[0],K.d-dw, K.door[1],K.d, dw,1));
   const lf=K.leaf;
-  g.push(`<path d="M${kx(K.w)},${ky(K.balk[0])} L${kx(K.w-lf)},${ky(K.balk[0])} A${lf*KS},${lf*KS} 0 0 0 ${kx(K.w)},${ky(K.balk[0]+lf)} z" fill="var(--warn-bg)"/>`);
   g.push(`<path d="M${kx(K.w)},${ky(K.balk[1])} L${kx(K.w-lf)},${ky(K.balk[1])} A${lf*KS},${lf*KS} 0 0 1 ${kx(K.w)},${ky(K.balk[1]-lf)} z" fill="var(--warn-bg)"/>`);
-  g.push(leafArc(K.w,K.balk[0], K.w-lf,K.balk[0], K.w,K.balk[0]+lf, lf,1));
   g.push(leafArc(K.w,K.balk[1], K.w-lf,K.balk[1], K.w,K.balk[1]-lf, lf,0));
   const aw=K.abst[1]-K.abst[0];
   g.push(leafArc(K.w,K.abst[0], K.w-aw,K.abst[0], K.w,K.abst[1], aw,1));
   // current tenants' line for reference
-  g.push(`<path d="M${kx(K.w-3.00)},${ky(K.d)} L${kx(K.w-3.00)},${ky(K.d-0.61)} L${kx(K.w-0.73)},${ky(K.d-0.61)} L${kx(K.w-0.73)},${ky(K.d-0.45)} L${kx(K.w)},${ky(K.d-0.45)}" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 3"/>`);
+  g.push(`<path d="M${kx(K.w-3.00)},${ky(K.d)} L${kx(K.w-3.00)},${ky(K.d-0.64)} L${kx(K.w)},${ky(K.d-0.64)}" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 3"/>`);
 
   let bad=[], warn=[], ok=[], info=[], avail, freeRect, head;
   if (wall==='wc'){
@@ -468,9 +465,9 @@ function kitchen(){
     if (over) bad.push(`Die Zeile ist ${fmt((L-avail)*100,0)} cm zu lang für die Badwand (${fmt(avail,2)} m zwischen Flurtür und Außenwand) und würde in die Türöffnung ragen.`);
     else if (avail-L < 0.05) warn.push(`Passt rechnerisch mit nur ${fmt((avail-L)*100,0)} cm Luft. Türzarge und Fußleisten vor Ort auf den Zentimeter nachmessen.`);
     else ok.push(`Die Länge passt: ${fmt((avail-L)*100,0)} cm Luft bis zur Flurtür.`);
-    if (swingHit) warn.push(`Die Zeile ragt ${fmt((x1-(K.w-lf))*100,0)} cm in den Aufschlag des unteren Balkontür-Flügels. Dort passen nur ca. ${fmt(K.swingD*100,0)} cm Tiefe, eure Zeile hat ${fmt(D*100,1)} cm. Dieser Flügel geht dann nur noch teilweise auf. Der obere Flügel (73 cm) bleibt als Durchgang frei. Die Vormieter haben dort auf ca. 45 cm reduziert.`);
-    else if (inSwing) ok.push(`Rechts unter der Balkontür passt die Tiefe (${fmt(D*100,0)} cm ≤ ${fmt(K.swingD*100,0)} cm).`);
-    else ok.push('Die Zeile endet vor dem Aufschlag der Balkontür, dort gibt es keinen Konflikt.');
+    if (swingHit) warn.push(`Mit ${fmt(D*100,1)} cm ist die Zeile tiefer als der Abstand von der Rückwand zur Balkontür-Laibung (ca. ${fmt(K.swingD*100,0)} cm). Dann stößt der geöffnete Flügel an die Arbeitsplatte.`);
+    else if (inSwing) ok.push(`Balkontür: Der Flügel schlägt vor der Arbeitsplatte auf, wie bei den Vormietern. Vor Ort nachmessen, ob von der Rückwand bis zur Türlaibung mindestens ${fmt(D*100,0)} cm Platz sind.`);
+    else ok.push('Die Zeile endet vor der Balkontür, dort gibt es keinen Konflikt.');
     if (align==='door') info.push('Bündig an der Tür liegt die Spüle weiter weg vom heutigen Wasseranschluss rechts außen. Dann eventuell Anschlüsse verlängern.');
     else ok.push('Die Spüle rechts außen liegt dort, wo heute Wasser und Abfluss sind.');
     freeRect=[TB>0?D+0.9:0.05, K.pier[3]+0.05, K.w-0.78, K.d-D-1.0];
@@ -512,13 +509,13 @@ function kitchen(){
   const rx=kx(K.w)+26;
   [[ (K.balk[0]+K.balk[1])/2,'Balkon'],[(K.abst[0]+K.abst[1])/2,'Abst.']].forEach(([yy,t])=>g.push(`<text x="${rx}" y="${ky(yy)}" font-size="12" text-anchor="middle" class="mut" transform="rotate(90 ${rx} ${ky(yy)})">${t}</text>`));
   g.push(`<text x="${kx(K.w-1.5)}" y="${ky(K.d)+32}" font-size="12" text-anchor="middle" class="mut">Badwand (Wasser)</text>`);
-  g.push(`<text x="${kx(K.w-1.9)}" y="${ky(K.d-0.61)-6}" font-size="11" text-anchor="middle" class="mut">Vormieter-Zeile</text>`);
+  g.push(`<text x="${kx(K.w-1.9)}" y="${ky(K.d-0.64)-6}" font-size="11" text-anchor="middle" class="mut">Vormieter-Zeile</text>`);
   g.push('</svg>');
   document.getElementById('kplan').innerHTML=g.join('');
 
   const over = L > avail + 0.001;
   const cls = bad.length ? 'bad' : (warn.length ? 'warn' : '');
-  const swing = warn.some(t=>t.includes('Balkontür-Flügels'));
+  const swing = warn.some(t=>t.includes('geöffnete Flügel'));
   head = over ? 'Passt nicht' : (bad.length ? 'Passt, aber mit Haken' : (swing ? 'Passt, Balkontür eingeschränkt' : (warn.length ? 'Passt knapp' : 'Passt')));
   const v=document.getElementById('verdict');
   v.className='verdict '+cls;
@@ -535,7 +532,7 @@ function kitchen(){
 }
 const presets = {
   presetA:{wall:'wc',align:'right',mods:'60, 60, 80, 60, 30',side:'40'},
-  presetB:{wall:'wc',align:'door',mods:'60, 60, 80, 30',side:'60, 40'},
+  presetB:{wall:'wc',align:'right',mods:'60, 60, 80, 60, 40',side:'30'},
   presetC:{wall:'wc',align:'right',mods:'60, 60, 80, 60, 40, 30',side:''},
 };
 Object.entries(presets).forEach(([id,p])=>document.getElementById(id).addEventListener('click',()=>{

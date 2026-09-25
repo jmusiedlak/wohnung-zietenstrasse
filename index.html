@@ -107,7 +107,7 @@ svg text.mut{fill:var(--muted)}
     <div><b class="num">99,75 m²</b><span>Wohnfläche lt. Exposé</span></div>
     <div><b class="num">1.150 €</b><span>Kaltmiete</span></div>
     <div><b class="num">+150 €</b><span>Nebenkosten (ohne Heizung und Warmwasser)</span></div>
-    <div><b class="num">+ca. 150 €</b><span>Gas für Heizung + Warmwasser, inkl. Wartung (Spanne 135–165 €)</span></div>
+    <div><b class="num">+ca. 150 €</b><span>Gas für Heizung + Warmwasser, inkl. Wartung (Spanne 140–165 €)</span></div>
     <div class="hi"><b class="num">≈ 1.450 €</b><span>realistische Warmmiete / Monat</span></div>
     <div><b class="num">3.450 € + 775 €</b><span>Kaution + Genossenschaftsanteile</span></div>
   </div>
@@ -187,10 +187,10 @@ svg text.mut{fill:var(--muted)}
         <tbody id="heatRows"></tbody>
       </table>
       <ul>
-        <li><b>Richtwert ist unser eigener Verbrauch 2025</b> in der jetzigen Wohnung (109,67 m², Gas-Zentralheizung). Das waren 990 € Heizung und 753 € Warmwasser, zusammen 145 €/Monat. Aus der Gebäudeabrechnung zurückgerechnet entspricht das ca. 7.400 kWh Heizung und 4.650 kWh Warmwasser.</li>
+        <li><b>Richtwert ist unser eigener Verbrauch 2025</b> in der jetzigen Wohnung (109,67 m², Gas-Zentralheizung). Das waren 990 € Heizung und 753 € Warmwasser, zusammen 145 €/Monat. Laut Minol waren das 7.910 kWh Heizung und 4.651 kWh Warmwasser.</li>
         <li><b>Warmwasser</b> hängt an den Personen, nicht an der Fläche. Die 4.650 kWh übernehme ich 1:1.</li>
-        <li><b>Heizung</b> skaliert auf 99,75 m² und bekommt einen Zuschlag von ca. 20 % für das schlechtere Gebäude: 1929, Klasse D, Dachgeschoss, Ecklage. Das jetzige Haus verbraucht ca. 92 kWh/m², für die Zietenstraße sind realistisch ca. 110 kWh/m² zu erwarten. Ergebnis: ca. 8.200 kWh.</li>
-        <li>Gegenprobe Energieausweis: 113,7 kWh/m² Nutzfläche × 1,2 × 99,75 m² ergibt ca. 13.600 kWh Bedarf. Der reale Verbrauch liegt bei Altbauten meist etwas darunter. Das passt zu den ca. 12.900 kWh.</li>
+        <li><b>Heizung</b> skaliert auf 99,75 m² und bekommt einen Zuschlag von ca. 20 % für das schlechtere Gebäude: 1929, Klasse D, Dachgeschoss, Ecklage. Das jetzige Haus verbraucht ca. 92 kWh/m², für die Zietenstraße sind realistisch ca. 110 kWh/m² zu erwarten. Ergebnis: ca. 8.600 kWh.</li>
+        <li>Gegenprobe Energieausweis: 113,7 kWh/m² Nutzfläche × 1,2 × 99,75 m² ergibt ca. 13.600 kWh Bedarf. Der reale Verbrauch liegt bei Altbauten meist etwas darunter. Das passt zu den ca. 13.300 kWh.</li>
         <li>Mit eigener Therme habt ihr einen eigenen Gasvertrag: Grundversorgung RheinEnergie 12,34 ct/kWh plus 172,55 €/Jahr, ein Sondervertrag liegt bei ca. 10 ct. Dazu kommen ca. 175 €/Jahr für Thermenwartung und Schornsteinfeger. Ob die schon in den 150 € Nebenkosten stecken, bitte bei der Genossenschaft erfragen.</li>
         <li class="src">Quellen: eigene Heiz-/Warmwasserabrechnung 2025, Energieausweis im Exposé (S. 7–8), <a href="https://www.rheinenergie.com/ueber-uns/newsroom/presse/nachrichten/nachricht_77315.html" target="_blank" rel="noopener">RheinEnergie-Preismitteilung zum 1.1.2026</a></li>
       </ul>
@@ -352,11 +352,11 @@ document.querySelector('#areas tbody').innerHTML = rows;
 // ---------- heating ----------
 // kWh, price/kWh, fixed €/yr (Grundpreis + Wartung/Schornsteinfeger)
 const heat = [
-  ['Zietenstr. · Sondervertrag ~10 ct', 12900, 0.10, 150+175],
-  ['Zietenstr. · Grundversorgung 12,34 ct', 12900, 0.1234, 172.55+175],
+  ['Zietenstr. · Sondervertrag ~10 ct', 13300, 0.10, 150+175],
+  ['Zietenstr. · Grundversorgung 12,34 ct', 13300, 0.1234, 172.55+175],
 ];
 document.getElementById('heatRows').innerHTML =
-  `<tr class="sub"><td>Heute (Abrechnung 2025, 109,67 m²)</td><td class="r">~12.050</td><td class="r">1.743</td><td class="r">145</td></tr>` +
+  `<tr class="sub"><td>Heute (Abrechnung 2025, 109,67 m²)</td><td class="r">12.561</td><td class="r">1.743</td><td class="r">145</td></tr>` +
   heat.map(([n,k,p,g])=>{const y=k*p+g; return `<tr><td>${n}</td><td class="r">${k.toLocaleString('de-DE')}</td><td class="r">${fmt(y,0)}</td><td class="r"><b>${fmt(y/12,0)}</b></td></tr>`;}).join('') +
   `<tr class="sub"><td colspan="4">Zietenstr. inkl. Grundpreis und ca. 175 €/Jahr Wartung + Schornsteinfeger</td></tr>`;
 
